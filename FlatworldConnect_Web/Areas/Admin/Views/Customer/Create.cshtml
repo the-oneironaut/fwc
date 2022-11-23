@@ -1,0 +1,46 @@
+﻿@model Customer
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2>Add a customer</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="customerName">Name</label>
+            <input asp-for="customerName" class="form-control" placeholder="E.g. Joe Smith"/>
+            <span asp-validation-for="customerName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="customerEmail">Email</label>
+            <input asp-for="customerEmail" class="form-control" placeholder="someone@example.com"/>
+            <span asp-validation-for="customerEmail" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="customerPhone">Phone</label>
+            <input asp-for="customerPhone" class="form-control" placeholder="9876543210"/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="customerAddress">Address</label>
+            <input asp-for="customerAddress" class="form-control" placeholder="House no., street, area"/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="customerLocation">Location</label>
+            <input asp-for="customerLocation" class="form-control" placeholder="City"/>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Add</button>
+        <a asp-controller="Customer" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back
+        </a>
+    </div>
+
+</form>
+
+@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

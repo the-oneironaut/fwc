@@ -1,0 +1,64 @@
+﻿@model ProjectManager
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2>Add a Project Manager</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="PMName">Name</label>
+            <input asp-for="PMName" class="form-control" placeholder="E.g. Joe Smith"/>
+            <span asp-validation-for="PMName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PMEmail">Email</label>
+            <input asp-for="PMEmail" class="form-control" placeholder="someone@example.com"/>
+            <span asp-validation-for="PMEmail" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PMPhone">Phone</label>
+            <input asp-for="PMPhone" class="form-control" placeholder="9876543210"/>
+            <span asp-validation-for="PMPhone" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="PMAddress">Address</label>
+            <input asp-for="PMAddress" class="form-control" placeholder="House no., street, area"/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PMLocation">Location</label>
+            <input asp-for="PMLocation" class="form-control" placeholder="City"/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PMState">State</label>
+            <input asp-for="PMState" class="form-control" placeholder="State" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="PMZipCode">Zip Code</label>
+            <input asp-for="PMZipCode" class="form-control" placeholder="E.g. 560001" />
+            <span asp-validation-for="PMZipCode" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="PMPassword">Password</label>
+            <input asp-for="PMPassword" class="form-control" placeholder="Set the password for the PM which can be used by the PM to login to FWC" />
+            <span asp-validation-for="PMPassword" class="text-danger"></span>
+
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Add</button>
+        <a asp-controller="Customer" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back
+        </a>
+    </div>
+
+</form>
+
+@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

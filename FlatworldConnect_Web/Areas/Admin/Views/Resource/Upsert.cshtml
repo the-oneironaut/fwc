@@ -1,0 +1,90 @@
+﻿@model FlatworldConnect.Models.ViewModels.ResourceVM
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<form method="post" asp-action="Upsert">
+    <input asp-for="Resource.resourceId" hidden />
+    <div class="border p-3 mt-4 row">
+        <div class="row pb-2">
+            <h2>@(Model.Resource.resourceId!=0?"Update": "Create") Resource</h2>
+            <hr />
+        </div>
+        @*@Html.HiddenFor(m => m.)*@
+        <div class="mb-3 col-6">
+            <label asp-for="Resource.customerId">Customer</label>
+            <select asp-for="Resource.customerId" asp-items="@Model.CustomerList" class="form-select">
+                <option disabled selected>--Select Customer--</option>
+            </select>
+            <span asp-validation-for="Resource.customerId" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Resource.projectId">Project</label>
+            <select asp-for="Resource.projectId" asp-items="@Model.ProjectList" class="form-select">
+                <option disabled selected>--Select Project--</option>
+            </select>
+            <span asp-validation-for="Resource.projectId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Resource.jobTitle">Job Title</label>
+            <input asp-for="Resource.jobTitle" class="form-control" placeholder="E.g. .NET Developer" />
+            <span asp-validation-for="Resource.jobTitle" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Resource.skillSet">Skill Set</label>
+            <textarea asp-for="Resource.skillSet" class="form-control" rows="3" placeholder="List the skill set seperated by comma(,)"></textarea>
+            <span asp-validation-for="Resource.skillSet" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Resource.experience">Experience</label>
+            <input asp-for="Resource.experience" class="form-control" placeholder="Enter experience in years" />
+            <span asp-validation-for="Resource.experience" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Resource.noOfMonths">Number of Months</label>
+            <input asp-for="Resource.noOfMonths" class="form-control" placeholder="Enter number of months" />
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Resource.startDate">Start Date</label>
+            <input asp-for="Resource.startDate" class="form-control" placeholder="DD-MM-YYYY" />
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Resource.endDate">End Date</label>
+            <input asp-for="Resource.endDate" class="form-control" placeholder="DD-MM-YYYY" />
+        </div>
+        
+        @*    <div class="mb-3">
+            <label asp-for="PMZipCode">Zip Code</label>
+            <input asp-for="PMZipCode" class="form-control" placeholder="E.g. 560001" />
+            <span asp-validation-for="PMZipCode" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="PMPassword">Password</label>
+            <input asp-for="PMPassword" class="form-control" placeholder="Set the password for the PM which can be used by the PM to login to FWC" />
+            <span asp-validation-for="PMPassword" class="text-danger"></span>
+
+        </div>
+        
+*@      
+<div class="col-12">
+    @if(Model.Resource.resourceId!=0){
+                <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+    }
+    else{
+<button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+    }
+
+        <a asp-controller="Resource" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back
+        </a></div>
+    </div>
+
+</form>
+
+@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }
